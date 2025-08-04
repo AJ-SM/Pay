@@ -57,17 +57,14 @@ userRoute.post('/login',async (req,res)=>{
         await Bank.create({
             userId:respo.id,balance:1+Math.random()*10000
         }) 
-       const token =  generateToken(respo.id)
-       res.json({"token":token})
+       const token = generateToken(respo.id)
+       res.send(token)
     }
     
 
    
 })
 
-userRoute.post('/check',userAuth,(req,res)=>{
-    res.send("All okkk")
-})
 
 userRoute.post('/send',userAuth,async (req,res)=>{
     const session = await mongoose.startSession();

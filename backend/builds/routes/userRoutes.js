@@ -66,12 +66,9 @@ exports.userRoute.post('/login', (req, res) => __awaiter(void 0, void 0, void 0,
             userId: respo.id, balance: 1 + Math.random() * 10000
         });
         const token = generateToken(respo.id);
-        res.json({ "token": token });
+        res.send(token);
     }
 }));
-exports.userRoute.post('/check', userAuth, (req, res) => {
-    res.send("All okkk");
-});
 exports.userRoute.post('/send', userAuth, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const session = yield mongoose_1.default.startSession();
     session.startTransaction();
